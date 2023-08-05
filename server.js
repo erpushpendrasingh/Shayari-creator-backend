@@ -32,7 +32,7 @@ app.get("/shayari", async (req, res) => {
 
           const shayari = response.data.choices[0].text.trim();
           console.log(response.data.choices[0].text.trim());
-          res.json({ shayari });
+          return res.json({ shayari });
      } catch (error) {
           console.error("Error:", error.response.data);
           res.status(500).json({ error: "Something went wrong" });
