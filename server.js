@@ -1,4 +1,3 @@
-
 const express = require("express");
 const axios = require("axios");
 require("dotenv").config();
@@ -9,6 +8,9 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+     res.send("Hello");
+});
 app.get("/shayari", async (req, res) => {
      try {
           const keyword = req.query.keyword;
@@ -29,7 +31,7 @@ app.get("/shayari", async (req, res) => {
           );
 
           const shayari = response.data.choices[0].text.trim();
-          console.log(response.data.choices[0].text.trim())
+          console.log(response.data.choices[0].text.trim());
           res.json({ shayari });
      } catch (error) {
           console.error("Error:", error.response.data);
